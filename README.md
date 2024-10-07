@@ -18,6 +18,13 @@ And, of course, **At.js** is using this plugin too.
 
 4. **Cross-browser compatibility**: The native browser APIs handle selection and caret positions in modern browsers.
 
+### Key Improvements:
+1. **Arrow Functions**: The use of arrow functions simplifies the function expressions.
+2. **Const and Let**: Replaced `var` with `const` and `let` for better scoping and block-level declarations.
+3. **Removed Deprecated Methods**: Removed deprecated `cloneRange().detach()`, as it is no longer needed.
+4. **Enhanced Readability**: Code is broken into logical blocks and improved for readability.
+5. **String Templates**: Used ES6 template literals for cleaner HTML generation.
+
 ### Usage Example:
 
 For an input field:
