@@ -9,6 +9,33 @@ And, of course, **At.js** is using this plugin too.
 
 * support iframe context
 
+### Key Changes:
+1. **Removed jQuery dependencies**: The code no longer uses jQuery for DOM manipulation or event handling. Instead, it relies on native DOM methods like `getBoundingClientRect`, `selectionStart`, `setSelectionRange`, and `createRange`.
+   
+2. **Content-editable and input field support**: Both content-editable elements and `input`/`textarea` elements are supported using native methods.
+
+3. **Mirror**: A `div` element is dynamically created and styled off-screen to measure the caret’s position, then removed after calculations. This mimics the behavior previously done by jQuery.
+
+4. **Cross-browser compatibility**: The native browser APIs handle selection and caret positions in modern browsers.
+
+### Usage Example:
+
+For an input field:
+
+```javascript
+var inputElement = document.querySelector('input');
+caret(inputElement, 'pos', 5);  // Set caret position to 5
+console.log(caret(inputElement, 'pos'));  // Get caret position
+```
+
+For content-editable elements:
+
+```javascript
+var contentEditableElement = document.querySelector('[contenteditable="true"]');
+caret(contentEditableElement, 'pos', 10);  // Set caret position to 10
+console.log(caret(contentEditableElement, 'pos'));  // Get caret position
+```
+
 Live Demo
 =========
 
