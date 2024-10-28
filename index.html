@@ -8,7 +8,7 @@
 
   <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script type="text/javascript" src="src/jquery.caret.js"></script>
+  <script type="text/javascript" src="caret.js"></script>
   <!-- // <script type="text/javascript" src="ckeditor/ckeditor.js"></script> -->
   <!-- // <script type="text/javascript" src="http://cdn.staticfile.org/ckeditor/4.2/ckeditor.js"></script> -->
 
@@ -18,8 +18,8 @@
     var $editable = $('#editable');
 
     function resetOffset($textField) {
-      var offset = $textField.caret('offset');
-      var position = $textField.caret('position');
+      var offset = caret($textField[0], 'offset');
+      var position = caret($textField[0], 'position');
       resizeBox(offset, position);
       return offset
     }
@@ -47,7 +47,8 @@
       else
         resetOffset($editable);
     });
-    $input.caret('pos', 53).focus();
+    caret($input[0], 'pos', 53);
+    $input.focus();
 
     // CKEDITOR.config.toolbar = [[ 'Source', '-', 'Bold', 'Italic' ]];
     // CKEDITOR.replace( 'ckEditor', {
@@ -65,10 +66,10 @@
     ifrBody.id = 'ifrBody';
     ifrBody.innerHTML = 'For <strong>WYSIWYG</strong> such as <strong>ckeditor</strong>'
     $(ifrBody).on('keyup mouseup', function() {
-      offset = $(ifrBody).caret('offset', {iframe: ifr});
+      offset = caret(ifrBody, 'offset', {iframe: ifr});
       offset.left += $(ifr).offset().left;
       offset.top += $(ifr).offset().top;
-      position = $(ifrBody).caret('position', {iframe: ifr});
+      position = caret(ifrBody, 'position', {iframe: ifr});
       resizeBox(offset, position);
     });
 
